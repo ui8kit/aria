@@ -9,5 +9,9 @@ test('plain example opens examples', async ({ page }) => {
 test('@a11y plain example is accessible', async ({ page }) => {
   await page.goto('/examples/plain/')
   const results = await new AxeBuilder({ page }).analyze()
-  expect(results.violations.length).toBe(0)
+  const summary = results.violations
+    .map((violation) => `${violation.id}: ${violation.help} (${violation.nodes.length})`)
+    .join('\n')
+
+  expect(results.violations, summary).toHaveLength(0)
 })
