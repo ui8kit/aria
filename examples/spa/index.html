@@ -7,7 +7,7 @@
     <script>
       window.__UI8KIT_ARIA_AUTO_INIT__ = false
     </script>
-    <script defer src="../../dist/index.iife.js"></script>
+    <script defer src="../../dist/all.iife.js"></script>
     <script>
       window.addEventListener('DOMContentLoaded', () => {
         window.ui8kit?.init(document.getElementById('route-a'))
@@ -17,7 +17,7 @@
   <body>
     <div data-spa-root>
       <div id="route-a" data-ui8kit="switch">
-        <button data-switch-control aria-checked="false">Route Toggle</button>
+        <button type="button" data-switch-control aria-checked="false">Route Toggle</button>
       </div>
     </div>
   </body>

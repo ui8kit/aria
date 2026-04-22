@@ -1,7 +1,11 @@
-import { describe, it, expect } from 'vitest'
+import { afterEach, beforeEach, describe, it, expect } from 'vitest'
+import { cleanupTestState, resetTestState } from '../../../tests/setup'
 import { getNamespace, registerPattern, resetRegistry } from '../registry'
 import { setAutoInitFlag, AUTO_INIT_KEY } from '../env'
 import type { Pattern } from '../types'
+
+beforeEach(resetTestState)
+afterEach(cleanupTestState)
 
 describe('core', () => {
   it('initializes namespace lazily', () => {

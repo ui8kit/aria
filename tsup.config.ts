@@ -35,6 +35,9 @@ export default defineConfig([
     minify: false,
     treeshake: true,
     cjsInterop: true,
+    outExtension({ format }) {
+      return { js: format === 'esm' ? '.mjs' : '.cjs' }
+    },
     noExternal: [],
   },
   {
@@ -49,6 +52,7 @@ export default defineConfig([
     dts: false,
     minify: false,
     treeshake: true,
+    outExtension: () => ({ js: '.iife.js' }),
     noExternal: [],
   },
   {

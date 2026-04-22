@@ -1,6 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { afterEach, beforeEach, describe, it, expect } from 'vitest'
+import { cleanupTestState, resetTestState } from '../../../../tests/setup'
 import { getNamespace, registerPattern } from '../../../core/registry'
 import { dialog } from '../index'
+
+beforeEach(resetTestState)
+afterEach(cleanupTestState)
 
 function setupBasicDialog(): void {
   document.body.innerHTML = `

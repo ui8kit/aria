@@ -1,6 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { afterEach, beforeEach, describe, it, expect } from 'vitest'
+import { cleanupTestState, resetTestState } from '../../../../tests/setup'
 import { getNamespace } from '../../../core/registry'
 import { switchPattern } from '../index'
+
+beforeEach(resetTestState)
+afterEach(cleanupTestState)
 
 describe('switch', () => {
   it('toggles aria-checked', () => {

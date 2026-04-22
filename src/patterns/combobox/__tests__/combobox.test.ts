@@ -1,6 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { afterEach, beforeEach, describe, it, expect } from 'vitest'
+import { cleanupTestState, resetTestState } from '../../../../tests/setup'
 import { getNamespace } from '../../../core/registry'
 import { combobox } from '../index'
+
+beforeEach(resetTestState)
+afterEach(cleanupTestState)
 
 describe('combobox', () => {
   it('opens on input focus', () => {

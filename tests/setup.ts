@@ -1,17 +1,12 @@
-import { afterEach, beforeEach } from 'vitest'
 import { resetRegistry, setAutoInitFlag } from '../src/core'
 
-// Disable auto-init in unit tests so registering a pattern doesn't
-// race with DOMContentLoaded against fixtures we set up per-test.
-setAutoInitFlag(false)
-
-beforeEach(() => {
-  resetRegistry()
+export function resetTestState(): void {
   setAutoInitFlag(false)
-  document.body.innerHTML = ''
-})
-
-afterEach(() => {
   resetRegistry()
   document.body.innerHTML = ''
-})
+}
+
+export function cleanupTestState(): void {
+  resetRegistry()
+  document.body.innerHTML = ''
+}

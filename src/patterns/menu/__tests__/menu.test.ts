@@ -1,6 +1,10 @@
-import { describe, it, expect } from 'vitest'
+import { afterEach, beforeEach, describe, it, expect } from 'vitest'
+import { cleanupTestState, resetTestState } from '../../../../tests/setup'
 import { getNamespace } from '../../../core/registry'
 import { menu } from '../index'
+
+beforeEach(resetTestState)
+afterEach(cleanupTestState)
 
 describe('menu', () => {
   it('initializes first item tabbable', () => {

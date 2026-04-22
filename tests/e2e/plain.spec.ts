@@ -6,7 +6,7 @@ test('plain example opens examples', async ({ page }) => {
   await expect(page.locator('[data-ui8kit="accordion"]')).toBeVisible()
 })
 
-test('plain example is accessible ', async ({ page }) => {
+test('@a11y plain example is accessible', async ({ page }) => {
   await page.goto('/examples/plain/')
   const results = await new AxeBuilder({ page }).analyze()
   expect(results.violations.length).toBe(0)
