@@ -26,7 +26,7 @@ export const menu: Pattern = {
       makeItemsFocusable(items)
       let current = 0
 
-      for (const [index, item] of items.entries()) {
+      for (const item of items) {
         item.addEventListener('keydown', (event) => {
           if (event.key === 'ArrowDown') {
             current = moveFocus(items, current, 1)

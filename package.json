@@ -39,75 +39,75 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs"
     },
     "./all": {
-      "import": "./dist/all.mjs",
-      "require": "./dist/all.cjs",
+      "types": "./dist/all.d.ts",
       "browser": "./dist/all.iife.js",
-      "types": "./dist/all.d.ts"
+      "import": "./dist/all.mjs",
+      "require": "./dist/all.cjs"
     },
     "./core": {
+      "types": "./dist/core.d.ts",
       "import": "./dist/core.mjs",
-      "require": "./dist/core.cjs",
-      "types": "./dist/core.d.ts"
+      "require": "./dist/core.cjs"
     },
     "./dialog": {
+      "types": "./dist/dialog.d.ts",
       "import": "./dist/dialog.mjs",
-      "require": "./dist/dialog.cjs",
-      "types": "./dist/dialog.d.ts"
+      "require": "./dist/dialog.cjs"
     },
     "./accordion": {
+      "types": "./dist/accordion.d.ts",
       "import": "./dist/accordion.mjs",
-      "require": "./dist/accordion.cjs",
-      "types": "./dist/accordion.d.ts"
+      "require": "./dist/accordion.cjs"
     },
     "./tabs": {
+      "types": "./dist/tabs.d.ts",
       "import": "./dist/tabs.mjs",
-      "require": "./dist/tabs.cjs",
-      "types": "./dist/tabs.d.ts"
+      "require": "./dist/tabs.cjs"
     },
     "./combobox": {
+      "types": "./dist/combobox.d.ts",
       "import": "./dist/combobox.mjs",
-      "require": "./dist/combobox.cjs",
-      "types": "./dist/combobox.d.ts"
+      "require": "./dist/combobox.cjs"
     },
     "./tooltip": {
+      "types": "./dist/tooltip.d.ts",
       "import": "./dist/tooltip.mjs",
-      "require": "./dist/tooltip.cjs",
-      "types": "./dist/tooltip.d.ts"
+      "require": "./dist/tooltip.cjs"
     },
     "./alert": {
+      "types": "./dist/alert.d.ts",
       "import": "./dist/alert.mjs",
-      "require": "./dist/alert.cjs",
-      "types": "./dist/alert.d.ts"
+      "require": "./dist/alert.cjs"
     },
     "./disclosure": {
+      "types": "./dist/disclosure.d.ts",
       "import": "./dist/disclosure.mjs",
-      "require": "./dist/disclosure.cjs",
-      "types": "./dist/disclosure.d.ts"
+      "require": "./dist/disclosure.cjs"
     },
     "./menu": {
+      "types": "./dist/menu.d.ts",
       "import": "./dist/menu.mjs",
-      "require": "./dist/menu.cjs",
-      "types": "./dist/menu.d.ts"
+      "require": "./dist/menu.cjs"
     },
     "./menubutton": {
+      "types": "./dist/menubutton.d.ts",
       "import": "./dist/menubutton.mjs",
-      "require": "./dist/menubutton.cjs",
-      "types": "./dist/menubutton.d.ts"
+      "require": "./dist/menubutton.cjs"
     },
     "./listbox": {
+      "types": "./dist/listbox.d.ts",
       "import": "./dist/listbox.mjs",
-      "require": "./dist/listbox.cjs",
-      "types": "./dist/listbox.d.ts"
+      "require": "./dist/listbox.cjs"
     },
     "./switch": {
+      "types": "./dist/switch.d.ts",
       "import": "./dist/switch.mjs",
-      "require": "./dist/switch.cjs",
-      "types": "./dist/switch.d.ts"
+      "require": "./dist/switch.cjs"
     }
   },
   "sideEffects": [
@@ -115,6 +115,7 @@
     "./dist/all.mjs",
     "./dist/all.cjs",
     "./dist/all.iife.js",
+    "./dist/all.iife.min.js",
     "./dist/dialog.mjs",
     "./dist/dialog.cjs",
     "./dist/accordion.mjs",
@@ -141,14 +142,12 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.10.3",
     "@changesets/cli": "^2.27.10",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.47.2",
     "@size-limit/preset-small-lib": "^11.1.6",
     "@types/node": "^20.14.2",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-import": "^2.31.0",
     "html-validate": "^8.23.0",
     "jsdom": "^24.0.0",
     "playwright": "^1.47.2",
@@ -157,6 +156,7 @@
     "size-limit": "^11.1.6",
     "tsup": "^8.3.5",
     "typescript": "^5.5.4",
+    "typescript-eslint": "^8.59.0",
     "vite": "^5.4.6",
     "vitest": "^2.1.8"
   },
@@ -165,11 +165,11 @@
   },
   "size-limit": [
     {
-      "path": "dist/core.iife.js",
+      "path": "dist/core.iife.min.js",
       "limit": "4kb"
     },
     {
-      "path": "dist/all.iife.js",
+      "path": "dist/all.iife.min.js",
       "limit": "22kb"
     }
   ]

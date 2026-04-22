@@ -90,7 +90,14 @@ function bindCombobox(cb: HTMLElement): Disposer {
           ? (index + 1) % visible.length
           : (index - 1 + visible.length) % visible.length
       syncVisibleSelection(cb, visible[next])
-      visible[next]?.scrollIntoView({ block: 'nearest' })
+      const target = visible[next]
+      if (target && typeof target.scrollIntoView === 'function') {
+        try {
+          target.scrollIntoView({ block: 'nearest' })
+        } catch {
+          // jsdom and some headless envs don't implement scrollIntoView; ignore.
+        }
+      }
       event.preventDefault()
       return
     }

@@ -4,4 +4,3 @@ import { switchPattern } from '../patterns/switch'
 registerPattern(switchPattern)
 
 export const init = switchPattern.init
-export default switchPattern

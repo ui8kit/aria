@@ -5,4 +5,3 @@ registerPattern(menubutton)
 
 export const init = menubutton.init
 export const close = menubutton.closeAll
-export default menubutton

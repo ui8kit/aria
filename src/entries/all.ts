@@ -33,9 +33,7 @@ registerPattern(menubutton)
 registerPattern(listbox)
 registerPattern(switchPattern)
 
-const ns = getNamespace()
-
-export default ns
+export const ui8kit = getNamespace()
 export {
   dialog,
   accordion,

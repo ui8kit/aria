@@ -34,6 +34,7 @@ export default defineConfig([
     dts: true,
     minify: false,
     treeshake: true,
+    cjsInterop: true,
     noExternal: [],
   },
   {

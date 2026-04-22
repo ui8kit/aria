@@ -4,4 +4,3 @@ import { accordion } from '../patterns/accordion'
 registerPattern(accordion)
 
 export const init = accordion.init
-export default accordion

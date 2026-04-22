@@ -4,4 +4,3 @@ import { listbox } from '../patterns/listbox'
 registerPattern(listbox)
 
 export const init = listbox.init
-export default listbox
