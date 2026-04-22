@@ -22,7 +22,9 @@ describe('combobox', () => {
     const input = document.querySelector('input') as HTMLInputElement
     input.focus()
 
-    expect(document.querySelector('[data-ui8kit="combobox"]')?.dataset.state).toBe('open')
+    expect(
+      document.querySelector<HTMLElement>('[data-ui8kit="combobox"]')?.dataset.state
+    ).toBe('open')
   })
 
   it('selects active option via ArrowDown + Enter', () => {
@@ -45,6 +47,8 @@ describe('combobox', () => {
     input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
 
     expect(input.value).toBe('one')
-    expect(document.querySelector('[data-ui8kit="combobox"]')?.dataset.state).toBe('closed')
+    expect(
+      document.querySelector<HTMLElement>('[data-ui8kit="combobox"]')?.dataset.state
+    ).toBe('closed')
   })
 })

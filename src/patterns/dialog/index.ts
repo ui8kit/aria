@@ -110,6 +110,10 @@ function handleDocumentKeydown(event: KeyboardEvent): void {
 
   const first = items[0]
   const last = items[items.length - 1]
+  if (!first || !last) {
+    event.preventDefault()
+    return
+  }
   const current = document.activeElement
 
   if (event.shiftKey) {
