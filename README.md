@@ -1,30 +1,110 @@
-# `@ui8kit/aria`
+# @ui8kit/aria
 
-## Why this exists
+TypeScript ARIA behavior layer for UI8Kit-compatible markup.
 
-Browser **ARIA behaviors** (dialog, tabs, combobox, accordion, …) used to ship as concatenated scripts inside [FastyGo UI8Kit](https://github.com/fastygo/ui8kit) (`UI8Kit/js`) and vendored into apps by hand. That works, but it is hard to **version**, **tree-shake**, **hotlink from a CDN**, or consume from **npm** without copying blobs.
+Two ways to consume the library:
 
-**`@ui8kit/aria`** is the **standalone** package for those behaviors: **IIFE** bundles for `<script>` tags, **ESM** for bundlers, **pinned CDN** URLs for sandboxes (CodePen, static demos), and a clear **`init()` / auto-init** contract (see [`.project/PACKAGING-AND-INIT.md`](.project/PACKAGING-AND-INIT.md)).
+1. **Pure ESM** (`@ui8kit/aria`) — tree-shakeable, no side effects on
+   import. You opt into each pattern explicitly.
+2. **Full bundle** (`@ui8kit/aria/all` / IIFE) — auto-registers every
+   pattern, exposes `window.ui8kit`, and wires up
+   `DOMContentLoaded`. Best for CDN drop-in usage.
 
-**Non-ARIA** chrome (theme toggle, locale switch) stays in separate packages or app code so this repo stays **APG-oriented** and small.
+## Quick start
 
-## Relation to UI8Kit
+Install:
 
-- **[fastygo/ui8kit](https://github.com/fastygo/ui8kit)** — Go/templ primitives and markup conventions (`data-ui8kit-*`).
-- **This repo** — JavaScript that makes those widgets **keyboard- and AT-friendly**, aligned with [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/patterns/) where applicable.
+```bash
+npm i @ui8kit/aria
+```
 
-Consumers pin a **semver** of `@ui8kit/aria` and vendor `dist/` into static assets, or load from **jsDelivr / unpkg** with a fixed version.
+### Pure ESM (tree-shakeable)
 
-## Project notes
+```ts
+import { registerPattern, getNamespace, dialog, tabs } from '@ui8kit/aria'
 
-| Path | Purpose |
-|------|---------|
-| [`.project/PACKAGING-AND-INIT.md`](.project/PACKAGING-AND-INIT.md) | npm, CDN, ESM, modular load order, `init()` vs auto-init |
+registerPattern(dialog)
+registerPattern(tabs)
+getNamespace().init()
+```
 
-**Official repository:** [github.com/ui8kit/aria](https://github.com/ui8kit/aria)  
-**npm:** [`@ui8kit/aria`](https://www.npmjs.com/package/@ui8kit/aria) *(publish when ready)*
+### Per-pattern side-effect entries (auto-register)
+
+```ts
+import '@ui8kit/aria/dialog'
+import '@ui8kit/aria/tabs'
+```
+
+Each per-pattern entry registers itself and (unless disabled) initializes
+on `DOMContentLoaded`.
+
+### Full bundle
+
+```ts
+import '@ui8kit/aria/all'
+```
+
+### CDN (IIFE)
+
+```html
+<!-- Pinned, with Subresource Integrity (replace HASH with output of `npm run sri`) -->
+<script
+  src="https://cdn.jsdelivr.net/npm/@ui8kit/aria@x.y.z/dist/all.iife.min.js"
+  integrity="sha384-HASH"
+  crossorigin="anonymous"
+  defer
+></script>
+```
+
+`window.ui8kit` becomes available after the script loads.
+
+## Auto init
+
+By default the namespace auto-initializes registered patterns on
+`DOMContentLoaded`. Disable per-page:
+
+```html
+<script>window.__UI8KIT_ARIA_AUTO_INIT__ = false</script>
+```
+
+Then run manually:
+
+```js
+window.ui8kit.init()
+```
+
+…or, in ESM:
+
+```ts
+import { setAutoInitFlag, getNamespace } from '@ui8kit/aria'
+setAutoInitFlag(false)
+// ...register patterns...
+getNamespace().init()
+```
+
+## Exposed namespace
+
+`window.ui8kit` (or the result of `getNamespace()`) exposes:
+
+- `ready(fn)`
+- `byAttr(name, root?)`
+- `register(pattern)`
+- `init(root?)`
+- `initPattern(name, root?)`
+- `disposePattern(name, root?)` — detach scope listeners.
+- `resetRegistry()` — clear the registry (test/HMR helper).
+
+Each entry ships in ESM/CJS (and IIFE for `all`/`core`). Patterns follow
+a per-pattern contract based on `data-ui8kit-*` attributes — see
+`src/patterns/<name>/markup.md` for the expected DOM shape.
+
+## SSR safety
+
+Importing `@ui8kit/aria` (the pure entry) and `@ui8kit/aria/core` has
+**no side effects** on `globalThis`/`window`. The global namespace is
+created lazily on the first call to `getNamespace()` and only when
+`document` is defined.
 
 ## License
 
-Licensed under the **MIT License** — see [`LICENSE`](LICENSE).
-# aria
+MIT

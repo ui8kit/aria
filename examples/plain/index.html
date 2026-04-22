@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ui8kit/aria plain example</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="../../dist/index.iife.js"></script>
+  </head>
+  <body class="p-8">
+    <h1 class="text-xl mb-4">ui8kit-aria plain</h1>
+    <div data-ui8kit="accordion">
+      <section data-accordion-item data-state="closed">
+        <button data-ui8kit-accordion-trigger>Section 1</button>
+        <div data-ui8kit-accordion-content>Panel 1</div>
+      </section>
+    </div>
+
+    <div data-ui8kit="tabs" data-tabs-value="one">
+      <button data-tabs-trigger data-tabs-value="one">One</button>
+      <button data-tabs-trigger data-tabs-value="two">Two</button>
+      <div data-tabs-panel data-tabs-value="one">A</div>
+      <div data-tabs-panel data-tabs-value="two" hidden>B</div>
+    </div>
+
+    <div data-ui8kit="dialog" id="dialog-plain" hidden>
+      <button data-ui8kit-dialog-close>Close</button>
+      <p>Dialog</p>
+    </div>
+    <button data-ui8kit-dialog-open data-ui8kit-dialog-target="dialog-plain">Open</button>
+  </body>
+</html>

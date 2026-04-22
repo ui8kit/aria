@@ -1,0 +1,4 @@
+[install]
+
+[install.lockfile]
+enabled = true

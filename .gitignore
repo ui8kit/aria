@@ -1,0 +1,9 @@
+node_modules
+bun.lockb
+dist
+coverage
+playwright-report
+playwright/.cache
+.vscode
+.DS_Store
+.nyc_output

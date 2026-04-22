@@ -1,0 +1,23 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - run: node scripts/generate-sri.mjs
+      - run: npx changeset version
+      - run: npm config set provenance true
+      - run: npx changeset publish

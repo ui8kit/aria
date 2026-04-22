@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ui8kit/aria htmx example</title>
+    <script defer src="../../dist/core.iife.js"></script>
+    <script defer src="../../dist/combobox.iife.js"></script>
+    <script>
+      window.__UI8KIT_ARIA_AUTO_INIT__ = false
+      window.addEventListener('DOMContentLoaded', () => {
+        if (window.ui8kit?.init) {
+          const container = document.getElementById('swap-zone')
+          window.ui8kit.init(container)
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <h1>HTMX/partial init</h1>
+    <div id="swap-zone" data-ui8kit="combobox">
+      <label>Combobox</label>
+      <input />
+      <div data-combobox-toggle>▼</div>
+      <ul role="listbox" hidden>
+        <li data-combobox-option data-combobox-value="alpha">Alpha</li>
+      </ul>
+    </div>
+  </body>
+</html>
