@@ -1,8 +1,11 @@
+[![npm version](https://img.shields.io/npm/v/@ui8kit/aria.svg)](https://www.npmjs.com/package/@ui8kit/aria)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
 # UI8Kit ARIA (npm i @ui8kit/aria)
 
 TypeScript ARIA behavior layer for UI8Kit-compatible markup.
 
-**Documentation:** [docs/README.md](https://github.com/ui8kit/aria/tree/main/docs/README.md) — overview, getting started, SRI/CDN, testing, CI, patterns index ([docs/patterns/README.md](https://github.com/ui8kit/aria/tree/main/docs/patterns/README.md)), and FAQ.
+**Documentation:** [docs/](https://github.com/ui8kit/aria/tree/main/docs/README.md) — overview, getting started, SRI/CDN, testing, CI, patterns index ([docs/patterns/](https://github.com/ui8kit/aria/tree/main/docs/patterns/README.md)), and FAQ.
 
 Two ways to consume the library:
 
@@ -51,12 +54,14 @@ import '@ui8kit/aria/all'
 ```html
 <!-- Pinned, with Subresource Integrity (replace HASH with output of `npm run sri`) -->
 <script
-  src="https://cdn.jsdelivr.net/npm/@ui8kit/aria@x.y.z/dist/all.iife.min.js"
+  src="https://cdn.jsdelivr.net/npm/@ui8kit/aria@0.1.0/dist/all.iife.min.js"
   integrity="sha384-HASH"
   crossorigin="anonymous"
   defer
 ></script>
 ```
+
+Or `https://unpkg.com/@ui8kit/aria@0.1.0/dist/all.iife.min.js`
 
 `window.ui8kit` becomes available after the script loads.
 
@@ -98,7 +103,7 @@ getNamespace().init()
 
 Each entry ships in ESM/CJS (and IIFE for `all`/`core`). Patterns follow
 a per-pattern contract based on `data-ui8kit-*` attributes — see
-[`docs/patterns/`](docs/patterns/README.md) and `src/patterns/<name>/markup.md` for the expected DOM shape.
+[`docs/patterns/`](https://github.com/ui8kit/aria/tree/main/doc/patterns/README.md) and `src/patterns/<name>/markup.md` for the expected DOM shape.
 
 ## SSR safety
 
