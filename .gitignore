@@ -7,3 +7,4 @@ playwright/.cache
 .vscode
 .DS_Store
 .nyc_output
+.manual

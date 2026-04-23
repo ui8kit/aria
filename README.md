@@ -2,6 +2,8 @@
 
 TypeScript ARIA behavior layer for UI8Kit-compatible markup.
 
+**Documentation:** [docs/README.md](https://github.com/ui8kit/aria/tree/main/docs/README.md) — overview, getting started, SRI/CDN, testing, CI, patterns index ([docs/patterns/README.md](https://github.com/ui8kit/aria/tree/main/docs/patterns/README.md)), and FAQ.
+
 Two ways to consume the library:
 
 1. **Pure ESM** (`@ui8kit/aria`) — tree-shakeable, no side effects on
@@ -96,7 +98,7 @@ getNamespace().init()
 
 Each entry ships in ESM/CJS (and IIFE for `all`/`core`). Patterns follow
 a per-pattern contract based on `data-ui8kit-*` attributes — see
-`src/patterns/<name>/markup.md` for the expected DOM shape.
+[`docs/patterns/`](docs/patterns/README.md) and `src/patterns/<name>/markup.md` for the expected DOM shape.
 
 ## SSR safety
 

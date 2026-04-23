@@ -3,7 +3,7 @@ import { readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 // Generate Subresource Integrity hashes for distribution artifacts.
-// Output is consumed by README/CDN snippets (see .project/PACKAGING-AND-INIT.md).
+// Output is consumed by README/CDN snippets (see docs/sri-cdn.md and .project/PACKAGING-AND-INIT.md).
 
 const distDir = 'dist'
 const files = readdirSync(distDir).filter(
