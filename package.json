@@ -18,6 +18,9 @@
     "docs/**",
     ".project/**"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "bunx tsup",
     "prepare": "bun run build",

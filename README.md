@@ -1,4 +1,4 @@
-# @ui8kit/aria
+# UI8Kit ARIA (npm i @ui8kit/aria)
 
 TypeScript ARIA behavior layer for UI8Kit-compatible markup.
 
