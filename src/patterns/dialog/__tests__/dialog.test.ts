@@ -46,6 +46,22 @@ describe('dialog', () => {
     expect(document.activeElement).toBe(trigger)
   })
 
+  it('syncs aria-expanded on linked open controls', () => {
+    setupBasicDialog()
+    registerPattern(dialog)
+    getNamespace().init()
+
+    const trigger = document.getElementById('trigger') as HTMLButtonElement
+
+    expect(trigger.getAttribute('aria-expanded')).toBe('false')
+
+    trigger.click()
+    expect(trigger.getAttribute('aria-expanded')).toBe('true')
+
+    dialog.close('dlg')
+    expect(trigger.getAttribute('aria-expanded')).toBe('false')
+  })
+
   it('traps Tab inside the dialog', () => {
     setupBasicDialog()
     registerPattern(dialog)

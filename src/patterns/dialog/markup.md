@@ -15,4 +15,5 @@ Close controls:
 
 Runtime attributes:
 - data-state="open"|"closed"
+- aria-expanded="true"|"false" on linked open controls
 - data-was-hidden (internal)

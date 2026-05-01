@@ -11,6 +11,23 @@ const ACTIVE_DIALOG_SELECTOR =
 
 const lastFocusByDialog = new WeakMap<HTMLElement, HTMLElement>()
 
+function linkedOpenControls(dialog: HTMLElement): HTMLElement[] {
+  const id = dialog.id
+  if (!id) {
+    return []
+  }
+
+  return Array.from(
+    document.querySelectorAll<HTMLElement>('[data-ui8kit-dialog-open][data-ui8kit-dialog-target]')
+  ).filter((control) => control.getAttribute('data-ui8kit-dialog-target') === id)
+}
+
+function syncOpenControls(dialog: HTMLElement, open: boolean): void {
+  for (const control of linkedOpenControls(dialog)) {
+    control.setAttribute('aria-expanded', open ? 'true' : 'false')
+  }
+}
+
 function toDialog(node?: string | Element | EventTarget | null): HTMLElement | null {
   if (!node) {
     return null
@@ -44,6 +61,7 @@ function setOpen(dialog: HTMLElement | null, open: boolean): void {
     dialog.setAttribute(OPEN_ATTR, OPEN_VALUE)
     dialog.removeAttribute('hidden')
     overlay?.removeAttribute('hidden')
+    syncOpenControls(dialog, true)
 
     const firstFocusable = findFocusable(dialog)[0]
     firstFocusable?.focus()
@@ -52,6 +70,7 @@ function setOpen(dialog: HTMLElement | null, open: boolean): void {
     dialog.setAttribute(OPEN_ATTR, CLOSED_VALUE)
     dialog.setAttribute('hidden', 'hidden')
     overlay?.setAttribute('hidden', 'hidden')
+    syncOpenControls(dialog, false)
 
     const last = lastFocusByDialog.get(dialog)
     if (last && document.contains(last)) {
